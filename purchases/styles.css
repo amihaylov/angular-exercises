@@ -1,0 +1,26 @@
+.col-fixed{
+	position: fixed;
+}
+
+.btn-side{
+	width: 150px;
+}
+
+.main {
+    padding-top: 60px;
+}
+
+.add-purchase{
+	float: right;
+	padding-right: 10px;
+}
+
+.right-pane{
+	position: relative;
+}
+
+.add-purchase{
+	position: absolute;
+    top: 0px;
+    right: 0px;
+}
