@@ -1,0 +1,39 @@
+ <!-- Modal -->
+					   <div class="modal fade" id="editPurchase" role="dialog">
+					    <div class="modal-dialog modal-lg">
+					    
+					      <!-- Modal content-->
+					      <div class="modal-content">
+					        <div class="modal-header">
+					          <button type="button" class="close" data-dismiss="modal">&times;</button>
+					          <h4 class="modal-title">Add Purchase</h4>
+					        </div>
+					        <div class="modal-body">
+					        	<div class="row" style="padding-left: 10px;">
+					        		    <div style="float:left;margin-right:20px;">
+									        <label for="purchase-name">Purchase Name</label>
+									        <input id="purchase-name" type="text" value="" name="purchase-name" ng-model="purchaseObj.purchase">
+									    </div>
+									    <div style="float:left;">
+									        <label for="store-name">Store Name</label>
+									        <input id="store-name" type="text" value="" name="store-name" ng-model="purchaseObj.store">
+									    </div>
+									    <div style="float:left;">
+									        <label for="price">Price</label>
+									        <input id="price" type="number" value="5" min="5" name="price" ng-model="purchaseObj.price">
+									    </div>
+					        	</div>
+			        		    <div style="float:left;margin-right:20px;">
+							        <label for="description">Description</label>
+							        <input id="description" type="text" value="" name="description" ng-model="purchaseObj.description">
+							    </div>
+					        </div>
+					        <div class="modal-footer">
+					          <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="editPurchase($index)">Edit</button>
+					          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					        </div>
+					      </div>
+					      
+					    </div>
+					  </div>
+				 	 <!-- End Modal -->

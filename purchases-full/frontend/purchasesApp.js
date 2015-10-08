@@ -1,50 +1,49 @@
-var app = angular.module('purchasesApp', ['ui.router']);
+angular.module('purchasesApp', ['ui.router', 'ui.bootstrap', 'restangular'])
 
-app.constant("DAYS_OF_WEEK",{
-    "DAYS":['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
-});
+    .constant("DAYS_OF_WEEK",{
+        "DAYS":['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+    })
 
-app.config(function($stateProvider, $urlRouterProvider, DAYS_OF_WEEK) {
-    
-    $urlRouterProvider.otherwise('/Monday');
-    
-    $stateProvider
+    .config(function($stateProvider, $urlRouterProvider, DAYS_OF_WEEK) {
         
-        // HOME STATES AND NESTED VIEWS ========================================
-        .state('home', {
-            url: '/{day}',
-            templateUrl: 'views/purchase-content.html',
-            controller: 'mainCtrl'
+        // Set base URL for requests (API url).
+        RestangularProvider.setBaseUrl('http://localhost:7171');
+
+        // Configure Restangular to use _id instead if id
+        RestangularProvider.setRestangularFields({
+            id: "_id",
+            name: "name"
+        });
+        
+        $stateProvider
+            
+            // HOME STATES AND NESTED VIEWS ========================================
+            .state('home', {
+                url: '/{name}',
+                templateUrl: 'views/purchase-content.html',
+                controller: 'mainCtrl'
+            }).state('home.add',{
+                url: '/add/{name}',
+                onEnter: function($modal, $state){
+                    $modal.open({
+                        templateUrl: 'views/add.html',
+                        controller: 'addCtrl',
+                        size: 'lg'
+                    }).result.finally(function(){
+                        $state.go('^');
+                    });
+                }
+        }).state('home.edit',{
+            url: '/edit',
+            onEnter: function($modal, $state){
+                $modal.open({
+                    templateUrl: 'views/edit.html',
+                    controller: 'editCtrl',
+                    size: 'lg'
+                }).result.finally(function(){
+                    $state.go('^');
+                });
+            }  
         });
 
 }); // closes $app.config()
-
-app.controller('mainCtrl', function($scope, $state,$stateParams, DAYS_OF_WEEK) {
-	
-    $scope.days=DAYS_OF_WEEK.DAYS;
-    $scope.curDayStr = $stateParams.day;
-    $scope.currentDay = $scope.days.indexOf($scope.curDayStr);
-
-    $scope.db = [[{'purchase':'batteries','store':'Wallmart','description':'Duracell','price':10},{'purchase':'meat','store':'Billa','description':'awful','price':20}],
-    	[{'purchase':'batteries','store':'Wallmart','description':'Duracell','price':30},{'purchase':'meat','store':'Billa','description':'awful','price':40}],
-    	[{'purchase':'batteries','store':'Wallmart','description':'Duracell','price':50},{'purchase':'meat','store':'Billa','description':'awful','price':60}]];
-
-    $scope.purchaseObj={'purchase':'','store':'','description':'','price':0};
-
-    $scope.changeDay = function (day){
-		$scope.currentDay = $scope.days.indexOf(day);
-        console.log($scope.currentDay);
-	}
-
-	$scope.addPurchase = function (){
-		$scope.db[$scope.currentDay].push($scope.purchaseObj);
-	}
-
-	$scope.editPurchase = function (index){
-		$scope.db[$scope.currentDay][index] = $scope.purchaseObj;
-	}
-
-	$scope.deletePurchase = function (index){
-		$scope.db[$scope.currentDay].splice(index,1);
-	}
-});
