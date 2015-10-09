@@ -1,0 +1,5 @@
+node-restful is kinda lame - it makes REST routes only for first level resource, not for nested. That's why in frontend in order to POST, PUT or DELETE a nested object, we have to first take the whole parent object, update it with the needed data (add, edit by property or delete(splice) by property) and then PUT the whole parent object back to backend.
+
+Also beware that when using RESTangular, it adds additional properties to the object. When comparing or in tests (Unit, end-to-end) it will fail since the RESTangular object that is sent, differs from the test data object. In that case we have to use custom sanitizing function, to purify the object from all the RESTangular stuff. See https://github.com/Tabris841/Purchases-manager/blob/master/client/test/unit/controllers.js for more info.
+
+Use ui.bootstrap for all the bootstrap features like modals and others. Otherwise there will be trouble.
