@@ -1,6 +1,6 @@
 <div class="row right-pane">
-	<h2 class="sub-header">{{curDayStr}} Purchases</h2>
-	<span class="add-purchase"><button class="btn btn-primary" data-toggle="modal" data-target="#addPurchase">Add Purchase</button></span>
+	<h2 class="sub-header">{{MainCtrl.day.name}} Purchases</h2>
+	<span class="add-purchase"><button class="btn btn-primary" ui-sref="home.add({id: MainCtrl.day._id})">Add Purchase</button></span>
 	
 	    
 	    
@@ -16,17 +16,17 @@
 		    	</tr>
 		  	</thead>
 			<tbody>
-		        <tr ng-repeat="record in db[currentDay] track by $index">
-		          <td>{{record.purchase}}</td>
-		          <td>{{record.store}}</td>
-		          <td>{{record.description}}</td>
-		          <td>{{record.price}}</td>
+		        <tr ng-repeat="purchase in MainCtrl.day.purchases">
+	            <td ui-sref="home.edit({index: $index})">{{ purchase.purchase }}</td>
+	            <td ui-sref="home.edit({index: $index})">{{ purchase.store }}</td>
+	            <td ui-sref="home.edit({index: $index})">{{ purchase.description }}</td>
+	            <td ui-sref="home.edit({index: $index})">{{ purchase.price | currency}}</td>
 		          <td>
-		          	<button type="button" class="btn btn-default" style="margin-right: 10px;" data-toggle="modal" data-target="#editPurchase">
+		          	<button type="button" class="btn btn-default" style="margin-right: 10px;" ui-sref="home.edit({index: $index})">
 		          		<span class="glyphicon glyphicon-pencil"></span>
 		          	</button>
 		          	
-		          	<button type="button" class="btn btn-default" ng-click="deletePurchase($index)"><span class="glyphicon glyphicon-remove"></span></button>
+		          	<button type="button" class="btn btn-default" ng-click="MainCtrl.deletePurchase($index)"><span class="glyphicon glyphicon-remove"></span></button>
 		          </td>
 		        </tr>
 			</tbody>

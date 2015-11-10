@@ -18,7 +18,7 @@ angular.module('purchasesApp').factory('appService', function (Restangular, $sta
 
                 // PUT current day with the added purchase.
                 day.put().then(function () {
-                    $state.go('purchases', null, {reload: true});
+                    $state.go('home', null, {reload: true});
                 });
             });
         },
@@ -31,7 +31,7 @@ angular.module('purchasesApp').factory('appService', function (Restangular, $sta
                 day.purchases.splice(purchaseIndex, 1);
 
                 day.put().then(function () {
-                    $state.go('purchases', null, {reload: true});
+                    $state.go('home', null, {reload: true});
                 });
             });
         },
@@ -50,7 +50,7 @@ angular.module('purchasesApp').factory('appService', function (Restangular, $sta
             Restangular.one('days', dayId).get().then(function(day){
                 day.purchases[purchaseIndex] = purchase;
                 day.put().then(function () {
-                    $state.go('purchases', null, {reload: true});
+                    $state.go('home', null, {reload: true});
                 });
             });
         }	

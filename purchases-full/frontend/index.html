@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link href="styles/styles.css" rel="stylesheet">
 	</head>
-	<body ng-app="purchasesApp" ng-model="days" ng-model="db" ng-model="currentDay" ng-controller="mainCtrl">
+	<body ng-app="purchasesApp" ng-model="days" ng-controller="HomeCtrl">
 	    <nav class="navbar navbar-inverse navbar-fixed-top">
 	      <div class="container-fluid">
 	        <div class="navbar-header">
@@ -38,7 +38,7 @@
 	        <div class="col-sm-3 col-md-2 sidebar col-fixed">
 	          <ul class="nav nav-sidebar" style="padding-top: 50px;">
 	            <li class="active"><h4>Purchases by day</h4></li>
-	            <li ng-repeat="day in days"><button type="button" class="btn btn-default btn-side" ui-sref="home({day: day})" ng-click="changeDay(day)">{{day}}</button></li>
+	            <li ng-repeat="day in days"><button type="button" class="btn btn-default btn-side" ui-sref="home({id: day._id})" ng-class="{'active' : $index == active}" ng-click="setActive($index)">{{day.name}}</button></li>
 	          </ul>
 	        </div>
 	        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main col-fixed" ui-view>
@@ -54,6 +54,15 @@
 		<script src='bower_components/angular-bootstrap/ui-bootstrap-tpls.js'></script>
 		<script src='bower_components/lodash/lodash.js'></script>
 		<script src='bower_components/restangular/dist/restangular.js'></script>
+
     	<script src="purchasesApp.js"></script>
+    	<!-- Controllers -->
+		<script src='controllers/home.js'></script>
+		<script src='controllers/main.js'></script>
+		<script src='controllers/add.js'></script>
+		<script src='controllers/edit.js'></script>
+
+		 <!--Services-->
+		<script src="services/appService.js" ></script>
 	</body>
 </html>
