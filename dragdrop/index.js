@@ -77,6 +77,9 @@ angular.module("dragDrop").controller("PushPopController", function($scope) {
                     break;
                 }
             }
+            if (destination.length === 0) {
+                destination.push(source[index]);
+            }
         } else {
             destination.push(source[index]);
         }
