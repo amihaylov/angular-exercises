@@ -2,7 +2,8 @@
 
 <div class="alert alert-success">
     <strong>Instructions:</strong>
-    Drag &amp; drop movie from Others to Favorite or vice versa. Click on a movie to see details about it.
+    Drag &amp; drop movie to rearange it in Favorites. Click on a movie title to see details about it. 
+    Click on a home button to move a movie from Favorites to Others and on a star button for vice versa.
 </div>
 
 <div class="simpleDemo row" ng-controller="ToggleController">
@@ -21,18 +22,6 @@
 
     <div class="col-md-4" ng-if="showInfo">
         {{models.selected.info}}
-    </div>
-
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Generated Model</h3>
-            </div>
-            <div class="panel-body">
-                <pre class="code">{{modelAsJson}}</pre>
-            </div>
-        </div>
-
     </div>
 
 </div>
