@@ -7,21 +7,29 @@
 </div>
 
 <div class="simpleDemo row" ng-controller="ToggleController">
-
-        <div class="col-md-4">
-            <div ng-repeat="(listName, list) in models.lists track by $index" >
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">List {{listName}}</h3>
+    <div class="col-md-4">
+        <div ng-repeat="(listName, list) in models.lists track by $index" >
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">List {{listName}}</h3>
+                </div>
+                <div ng-if="$index == 0" class="panel-body" ng-include="'simple.html'"></div>
+                <div ng-if="$index == 1" class="panel-body" ng-include="'others.html'"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Info about: 
+                    <span class="movie-title">{{models.selected.label}}<span>
+                </h3>
+                <div class="row">
+                    <div class="col-md-3 movie-info" ng-if="showInfo">
+                        {{models.selected.info}}
                     </div>
-                    <div ng-if="$index == 0" class="panel-body" ng-include="'simple.html'"></div>
-                    <div ng-if="$index == 1" class="panel-body" ng-include="'others.html'"></div>
                 </div>
             </div>
         </div>
-
-    <div class="col-md-4" ng-if="showInfo">
-        {{models.selected.info}}
     </div>
-
 </div>

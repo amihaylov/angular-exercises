@@ -65,3 +65,16 @@
 button {
     float: right;
 }
+
+.movie-info {
+    color: #000;
+    background-color: #FFF;
+    border-width: 2px;
+    border-style: dotted;
+    margin-top: 5%;
+    width: 100%;
+}
+
+.movie-title {
+    font-weight: bold;
+}
