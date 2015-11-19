@@ -1,0 +1,15 @@
+{
+	"name": "dragdrop",
+	"version": "0.1.0",
+	"description": "Small drag and drop movies project with Angular.",
+	"main": "app.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "http-server -p 8000"
+	},
+	"author": "Tonko",
+	"license": "GPLv2",
+	"devDependencies": {
+		"http-server": "~0.6.1"
+	}
+}
