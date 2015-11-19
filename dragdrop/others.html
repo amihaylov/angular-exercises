@@ -17,10 +17,10 @@
     	dnd-draggable="item"
     	dnd-disable-if="true"
     	dnd-type="none"
-        dnd-selected="models.selected = item"
+        dnd-selected="selectItem(item)"
         ng-class="{'selected': models.selected === item}"
         >
-        <span ng-click="showText()">{{item.label}}</span>
+        {{item.label}}
         <button type="button" ng-click="toFav($index)"><i class="fa fa-star"></i>
 		</button>
     </li>
