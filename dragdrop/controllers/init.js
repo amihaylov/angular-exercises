@@ -5,16 +5,16 @@ angular.module("dragDrop").controller("InitController", function ($scope) {
     if (!localStorage.getObject('models')) {
         $scope.models = {
             selected: null,
-            lists: {"Favorites": [], "Others": []},
+            lists: {'Favorites': [], 'Others': []}
         };
 
         var movies = [
-            {label: "Star Wars", info: "Sci-fi ultra!"},
-            {label: "Star Trek", info: "Sci-fi Uber ultra!"},
-            {label: "It 1990", info: "Horror at its best!"},
-            {label: "Green Mile", info: "Heartbreaking story!"},
-            {label: "Titanic", info: "Best movie for going asleep!"},
-            {label: "Back to the future", info: "No flying boards in 2015 :("}
+            {label: 'Star Wars', info: 'Sci-fi ultra!'},
+            {label: 'Star Trek', info: 'Sci-fi Uber ultra!'},
+            {label: 'It 1990', info: 'Horror at its best!'},
+            {label: 'Green Mile', info: 'Heartbreaking story!'},
+            {label: 'Titanic', info: 'Best movie for going asleep!'},
+            {label: 'Back to the future', info: 'No flying boards in 2015 :('}
         ];
 
         // Generate initial model
@@ -38,8 +38,17 @@ angular.module("dragDrop").controller("InitController", function ($scope) {
         $scope.models = localStorage.getObject('models');
     }
 
-    // Model to JSON for demo purpose
+    // Model to JSON for saving it to localStorage whenever changed
     $scope.$watch('models', function(model) {
-        $scope.modelAsJson = angular.toJson(model, true);
+
+        // We don't want object reference with $scope
+        var modelAsJson = _.cloneDeep(model);
+            modelAsJson.selected = null;
+        
+        // modelAsJson becomes a string, without angular stuff
+            modelAsJson = angular.toJson(model, true);
+        
+        localStorage.setObject('models', JSON.parse(modelAsJson));
     }, true);
+
 });
