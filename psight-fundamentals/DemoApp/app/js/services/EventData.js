@@ -42,5 +42,8 @@ eventsApp.factory('eventData', function($http, $log, $resource) {
 			// 		},
 			// 	],
 			// },
+			getAllEvents: function() {
+ 				return resource.query();
+			},
 	};
 });
