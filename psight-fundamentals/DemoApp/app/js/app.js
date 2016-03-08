@@ -1,7 +1,7 @@
 'use strict';
 
 var eventsApp = angular.module('eventsApp', ['ngSanitize', 'ngResource', 'ngRoute'])
-						.config(function($routeProvider) {
+						.config(function($routeProvider, $locationProvider) {
 							$routeProvider.when('/newEvent',
 								{
 									templateUrl: 'templates/NewEvent.html',
@@ -18,6 +18,8 @@ var eventsApp = angular.module('eventsApp', ['ngSanitize', 'ngResource', 'ngRout
 									controller: 'EventController',
 								});
 							$routeProvider.otherwise({redirectTo: '/events'});
+							// No more # in url
+							$locationProvider.html5Mode(true);
 						})
 						.factory('myCache', function($cacheFactory) {
 							return $cacheFactory('myCache', {capacity: 3});

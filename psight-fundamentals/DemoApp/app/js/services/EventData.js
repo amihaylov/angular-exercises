@@ -1,8 +1,8 @@
 eventsApp.factory('eventData', function($http, $log, $resource) {
 	var resource = $resource('/data/event/:id', {id: '@id'});
 	return {
-			getEvent: function() {
-				return resource.get({id: 1});
+			getEvent: function(eventId) {
+				return resource.get({id: eventId});
 				// If you want to use $http
 				// return $http({method: 'GET', url: '/data/event/1'});
 			},

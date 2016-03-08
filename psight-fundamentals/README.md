@@ -10,3 +10,8 @@ If you are on a Linux or OSX box, you may need to execute "chmod +x server.sh" i
 
 Switch to other branches to see the routing and 
 directives exercises.
+
+========================
+
+Routing is without $location service, look it up
+in Angular docs
