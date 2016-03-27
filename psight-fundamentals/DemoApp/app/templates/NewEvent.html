@@ -8,7 +8,7 @@
 				<input ng-model="event.name" type="text" id="eventName" placeholder="Name of your event..." required/>
 				<label for="eventDate">Event Date:</label>
 				<!-- ng-pattern validates field according to the regex inside it-->
-				<input ng-model="event.date" type="text" id="eventDate" placeholder="format (mm/dd/yyyy)" required ng-pattern="/\d\d/\d\d/\d\d\d\d/"/>
+				<input ng-model="event.date" type="text" id="eventDate" placeholder="format (mm/dd/yyyy)" required ng-pattern="/\d\d/\d\d/\d\d\d\d/" date-keys/>
 				<label for="eventTime">Event Time:</label>
 				<input ng-model="event.time" type="text" id="eventTime" placeholder="Start and end time..."/>
 				<label for="eventLocation">Event Location:</label>
